@@ -12,6 +12,7 @@ step 3:-
 
 step 4:-
      create inventory.yaml
+     
         all:
           vars:
             ansible_become: true
@@ -27,6 +28,7 @@ step 4:-
 
 step 5:- 
     create an playbook.yaml (it contain the jobs to do in the server)
+    
           - name: Install and start Nginx on worker node
             hosts: frontend
             become: yes
@@ -46,9 +48,9 @@ step 5:-
 
 step 6:-
     run the command to ansible
-      ansible-playbook playbook.yaml
+      ansible-playbook `playbook.yaml`
              or
-      ansible-playbook -i inventory.yaml playbook.yaml
+      ansible-playbook -i `inventory.yaml` `playbook.yaml`
 
 
 
