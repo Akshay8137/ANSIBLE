@@ -1,11 +1,12 @@
-step 1:-
+##step 1:-
     create one ec2 server
 
 step 2:- install ansible
+```
      sudo apt update
      sudo apt install -y ansible
      ansible --version
-
+```
 step 3:-
      create a folder and save key pair
 
