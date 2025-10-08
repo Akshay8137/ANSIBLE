@@ -13,11 +13,14 @@
 ```
 Step 1:- 
    create 2 instance
+   
 Step 2:-
    create ansible file under /etc
+
 Step 3:-
    save key pair in this file and change mod
      chmod 600 <keyname>
+
 Step 4:- 
     create hosts.yaml
           
