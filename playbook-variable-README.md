@@ -58,12 +58,16 @@ create two folder one for group level varible and one for hosts level varible
 
       nano frontend.yaml
 
+edit that frontend.yaml
+
          app_name: nginx
 
 Step 7:-
    now open host_vars and create one host level varible for worker1(1st host in hosts.yaml)
    
       nano worker1.yaml
+edit worker file
+
         app_user: worker1
 
 Step 8:-
