@@ -1,5 +1,5 @@
 
-file stracture :-
+## file stracture :-
     /etc/ansible/
             ├── octkey.pem
             └── inventory/
@@ -10,15 +10,23 @@ file stracture :-
             └── host_vars/
                       └── worker1.yaml (optional)
 
-Step 1:- 
+## Step 1:-
+
    create 2 instance
-Step 2:-
+
+## Step 2:-
+
    create ansible file under /etc
-Step 3:-
+
+## Step 3:-
+
    save key pair in this file and change mod
-     chmod 600 <keyname>
-Step 4:- 
-    create hosts.yaml
+
+    chmod 600 <keyname>
+
+## Step 4:-
+
+create hosts.yaml
           
           all:
             vars:
@@ -38,22 +46,30 @@ Step 4:-
                     ansible_ssh_private_key_file: /home/akshay-r/ansible-variable/ansible/etc/key.pem
                     ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
-Step 5:- 
-    create two folder one for group level varible and one for hosts level varible
+## Step 5:-
+
+create two folder one for group level varible and one for hosts level varible
+
        mkdir group_vars host_vars
 
-Step 6:-
+## Step 6:-
+
    open group_vars folder and create one group level varible
+
       nano frontend.yaml
+
          app_name: nginx
 
 Step 7:-
    now open host_vars and create one host level varible for worker1(1st host in hosts.yaml)
+   
       nano worker1.yaml
         app_user: worker1
 
 Step 8:-
+   
    Create playbook.yaml
+   
        - name: nginx install
          hosts: frontend
          become: yes
@@ -73,7 +89,10 @@ Step 8:-
                msg: "app will run as {{ app_user | default('ubuntu') }}"
 
 Step 9:-
-  ansible-playbook -i <inventory file name> <playbook name>
+
+  run
+  
+    ansible-playbook -i <inventory file name> <playbook name>
 
 
 
