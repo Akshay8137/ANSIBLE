@@ -1,0 +1,90 @@
+
+file stracture :-
+    /etc/ansible/
+            ├── octkey.pem
+            └── inventory/
+            ├── host.yaml
+            ├── playbook.yaml
+            ├── group_vars/
+            │         └── frontend.yaml
+            └── host_vars/
+                      └── worker1.yaml (optional)
+
+Step 1:- 
+   create 2 instance
+Step 2:-
+   create ansible file under /etc
+Step 3:-
+   save key pair in this file and change mod
+     chmod 600 <keyname>
+Step 4:- 
+    create hosts.yaml
+          
+          all:
+            vars:
+              ansible_become: true
+            children:
+              frontend:
+                hosts:
+                  worker1:
+                    ansible_host: 54.173.37.252
+                    ansible_user: ubuntu
+                    ansible_ssh_private_key_file: /home/akshay-r/ansible-variable/ansible/etc/key.pem
+                    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+                    app_user: worker1
+                  worker2:
+                    ansible_host: 13.220.177.87
+                    ansible_user: ubuntu
+                    ansible_ssh_private_key_file: /home/akshay-r/ansible-variable/ansible/etc/key.pem
+                    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+Step 5:- 
+    create two folder one for group level varible and one for hosts level varible
+       mkdir group_vars host_vars
+
+Step 6:-
+   open group_vars folder and create one group level varible
+      nano frontend.yaml
+         app_name: nginx
+
+Step 7:-
+   now open host_vars and create one host level varible for worker1(1st host in hosts.yaml)
+      nano worker1.yaml
+        app_user: worker1
+
+Step 8:-
+   Create playbook.yaml
+       - name: nginx install
+         hosts: frontend
+         become: yes
+         tasks:
+           - name: Update the apt package index (for Debian/Ubuntu)
+             ansible.builtin.apt:
+               update_cache: yes
+      
+           - name: Install Nginx on Debian/Ubuntu
+             ansible.builtin.apt:
+               name: "{{ app_name }}"
+               state: present
+             when: ansible_os_family == "Debian"
+      
+           - name: Show app user
+             debug:
+               msg: "app will run as {{ app_user | default('ubuntu') }}"
+
+Step 9:-
+  ansible-playbook -i <inventory file name> <playbook name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
