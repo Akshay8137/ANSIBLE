@@ -1,16 +1,16 @@
 ## step 1:-
     create one ec2 server
 
-step 2:- install ansible
+## step 2:- install ansible
 ```
      sudo apt update
      sudo apt install -y ansible
      ansible --version
 ```
-step 3:-
+## step 3:-
      create a folder and save key pair
 
-step 4:-
+## step 4:-
      create inventory.yaml
      
         all:
@@ -26,7 +26,7 @@ step 4:-
                   ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
 
-step 5:- 
+## step 5:- 
     create an playbook.yaml (it contain the jobs to do in the server)
     
           - name: Install and start Nginx on worker node
@@ -46,7 +46,7 @@ step 5:-
                  state: started
                  enabled: yes
 
-step 6:-
+## step 6:-
     run the command to ansible
     
   ansible-playbook `playbook.yaml`
