@@ -48,7 +48,8 @@ step 5:-
 
 step 6:-
     run the command to ansible
-      ansible-playbook `playbook.yaml`
+    
+  ansible-playbook `playbook.yaml`
       
             
 ansible-playbook -i `inventory.yaml` `playbook.yaml`
