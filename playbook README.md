@@ -1,4 +1,4 @@
-##step 1:-
+## step 1:-
     create one ec2 server
 
 step 2:- install ansible
@@ -49,8 +49,9 @@ step 5:-
 step 6:-
     run the command to ansible
       ansible-playbook `playbook.yaml`
-             or
-      ansible-playbook -i `inventory.yaml` `playbook.yaml`
+      
+            
+ansible-playbook -i `inventory.yaml` `playbook.yaml`
 
 
 
