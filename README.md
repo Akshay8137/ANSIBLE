@@ -74,7 +74,7 @@ Step 8:-
                msg: "app will run as {{ app_user | default('ubuntu') }}"
 
 Step 9:-
-  ansible-playbook -i <inventory file name> <playbook name>
+  ansible-playbook -i `inventory file name` `playbook name`
 
 
 
